@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel = "stylesheet", href = "style.css"> 
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('nav');
+            sidebar.style.display = (sidebar.style.display === 'none' || sidebar.style.display === '') ? 'block' : 'none';
+        }
+        let curentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const slideWidth = document.querySelector('.slide').offsetWidth;
+            currentIndex = index;
+
+            slides.style.transform = translateX(${-currentIndex * slideWidth}px);
+        }
+
+        function nextSlide() {
+            const totalSlides = document.querySelectorAll('.slide').length;
+            currentIndex = (curentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            const totalSlides = document.querySelectorAll('.slide').length;
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);
+        }
+    </script>
+</head>
+<body>
+    
+    <header>
+        <h1>Virtual StudyRoom</h1>
+    </header>
+
+    <nav>
+        <h2>Sidebar</h2>
+
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </nav>
+
+    <div class = "search-bar">
+    <main>
+        <button id="toggle-btn" onclick="toggleSidebar()">&#9776;</button> 
+        <form action="#" method="get">
+            <label for="search"></label>
+            <input type="text" id="search" name="search" placeholder="Search for Topics here...">
+            <input type="submit" value="Search">
+        </form>
+    </main>
+    </div>
+    <div class="slider-container">
+        <h2 class = "center-head"> Featured content </h2>
+        <div class="slides">
+            <div class="slide"><img src="res/maths.jpeg" alt="Featured Content 1"></div>
+            <div class="slide"><img src="res/cs.jpeg" alt="Featured Content 2"></div>
+            <div class="slide"><img src="res/comm.jpeg" alt="Featured Content 3"></div>
+            <div class="slide"><img src="res/ec.jpeg" alt="Featured Content 3"></div>
+            <div class="slide"><img src="res/maths.jpeg" alt="Featured Content 3"></div>
+            <div class="slide"><img src="res/cs.jpeg" alt="Featured Content 3"></div>
+        </div>
+        <div class="arrow prev" onclick="prevSlide()">&#9665;</div>
+        <div class="arrow next" onclick="nextSlide()">&#9655;</div>
+    </div>
+
+   
+
+</body>
+</html>
